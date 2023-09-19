@@ -5,11 +5,11 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/bfhl", (req, res) => {
-  const requestData = req.body.data;
+  const reqData = req.body.data;
   const numbers = [];
   const alphabets = [];
 
-  requestData.forEach((item) => {
+  reqData.forEach((item) => {
     if (/[a-zA-Z]/.test(item)) {
       alphabets.push(item);
     } else if (/[0-9]/.test(item)) {
@@ -26,7 +26,7 @@ app.post("/bfhl", (req, res) => {
   const email = "suryamani.kumar2020@vitbhopal.ac.in";
   const roll_number = "20BCE10080";
 
-  const highest_alphabet = alphabets.reduce(
+  const high_alphabet = alphabets.reduce(
     (max, current) => (max > current ? max : current),
     ""
   );
@@ -37,7 +37,7 @@ app.post("/bfhl", (req, res) => {
     roll_number,
     numbers,
     alphabets,
-    highest_alphabet,
+    high_alphabet,
   };
 
   res.json(response);
